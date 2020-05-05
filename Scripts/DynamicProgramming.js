@@ -22,8 +22,8 @@ function GetMinimum(key, memo) {
     }
     var solutions = [];
     var allKeys = [];
-
     for (var i = 1; i < key.length; i++) {
+        //Break if execution takes too long
         executionTime = performance.now() - startTime
         if (executionTime > 5000) {
             timeout = true;

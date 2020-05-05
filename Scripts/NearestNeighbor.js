@@ -1,12 +1,11 @@
 function SolveNearestNeighbor() {
-
     var totalDistance = 0;
     var nVertices = edgeArray[0].length;
     var isVisited = new Array(nVertices).fill(0)
-    // Get random start vertex
-    var startVertex = Math.floor(Math.random() * nVertices);
+    var startVertex = Math.floor(Math.random() * nVertices); //Random start vertex
     var currentVertex = startVertex;
     
+    //Loop through all verticies
     for (var i = 0; i < nVertices; i++) {
         AddMarker(Object.keys(activeCities)[currentVertex], "red");
         isVisited[currentVertex] = 1;
