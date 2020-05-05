@@ -7,4 +7,4 @@ Comparing a recursive Dynamic Programming algorithm against a Nearest Neighbor h
 ## View website
 https://exoflow.github.io/TSPAlgorithms/
 
-- [Preview](Preview.png)
+![Preview](Preview.png)
