@@ -14,6 +14,18 @@
     background-color:black
 }
 
+.col-xs-12 {
+    margin-left: 50px;
+}
+
+.col-sm-12 {
+    margin-left: 50px;
+}
+
+.col-md-12 {
+    margin-left: 50px;
+}
+
 #numberOfCities {
     display: flex;
 }
@@ -28,14 +40,14 @@
 h3{
     padding-top: 8px;
     color: white;
-    padding-left: 12px;
+    margin-left: 0;
 }
 
 .row p {
-    padding-bottom: 4px;
     margin-bottom: 0px;
     color: darkgrey;
     align-self: center;
+    line-height: 28px;
 }
 
 #activeCities {
@@ -44,6 +56,7 @@ h3{
     margin-right: 15px;
     padding-top: 0px;
     margin-top: 0px;
+    padding-bottom: 0;
 }
 
 h5{
