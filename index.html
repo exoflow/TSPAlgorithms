@@ -1,356 +1,148 @@
-<!-- Copyright 2013-2019 Start Bootstrap
-Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-business-frontpage/blob/master/LICENSE) -->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>My Projects</title>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./CSS/main.css">
 
-  <!-- Bootstrap -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-  <!-- CSS -->
-  <link href="css/main.css" rel="stylesheet">
+    <!-- Leaflet map-->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css" />
 
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>TSP Algorithms</title>
 </head>
 
-<!-- Body -->
-<body style="padding-top: 0px; margin-top: 0px;">
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-dark bg-dark" style="height: 80px;">
-    <div class="container" style="margin-top: 20px;">
-      <a href="#">
-        <img src="images/Name.png" width="200px" style="align-self:center;">
-      </a>
-    </div>
-  </nav>
-
-  <!-- Page Content -->
-  <div class="container" style="margin-top: 40px; margin-bottom: 40px;">
-
-    <div class="row">
-      <div class="col-md-8 mb-4">
-        <h3>My projects</h3>
-      </div>
-    </div>
-
-    <!-- Card filter -->
-    <div class="filter">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox0" value="option0" checked
-          onclick="uncheckAll()">
-        <label class="form-check-label" for="inlineCheckbox0">All</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="classification">
-        <label class="form-check-label" for="inlineCheckbox1">Classification</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="regression">
-        <label class="form-check-label" for="inlineCheckbox2">Regression</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="reinforcement-learning">
-        <label class="form-check-label" for="inlineCheckbox4">Reinforcement learning</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="mobile-dev">
-        <label class="form-check-label" for="inlineCheckbox5">Mobile development</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="algorithms">
-        <label class="form-check-label" for="inlineCheckbox5">Algorithms</label>
-      </div>
-      <!-- <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="web-dev">
-        <label class="form-check-label" for="inlineCheckbox6">Web development</label>
-      </div> -->
-      <!-- <hr> -->
-    </div>
-
-    <!-- Cards -->
-    <div class="row" style="margin-top: 50px;">
-
-      <div class="col-md-4 mb-5" name="algorithms">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/TSP.png" alt="Travelling Salesman Problem">
-          <div class="card-body">
-            <h4 class="card-title">TSP Algorithms </h4>
-            <p class="card-text"> Comparing a recursive Dynamic Programming algorithm against a Nearest Neighbor heuristic 
-              to solve the Travelling Salesman Problem. Visualized on an interactive Leaflet map. Implemented in JavaScript.
-               </p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/TSPAlgorithms/tree/master/Scripts"
-              class="btn btn-dark">View Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;">
-            </a>
-            <a target="_blank" rel="noopener noreferrer" href="https://exoflow.github.io/TSPAlgorithms/"
-              class="btn btn-dark">View Website
-            </a>
-          </div>
+<body>
+    <div id='baseContainer' class="container-fluid">
+        <div class="row">
+            <!-- Column -->
+            <div class="col-2">
+                <h3>Travelling Salesman Problem</h3>
+            </div>
+            <!-- Column number of cities-->
+            <div class="col">
+                <div class="row">
+                    <h5>Number of Cities </h5>
+                </div>
+                <div class="row">
+                    <div id="numberOfCities">
+                        <!-- Left button -->
+                        <button id='cityNumberButton' type="button" class="btn btn-outline-primary"
+                            onclick="RemoveMarker(GetRandomActiveCity())">
+                            <svg class="bi bi-dash" width="23" height="23" viewBox="0 0 16 16" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <!-- Number -->
+                        <h5 id="activeCities">12</h5>
+                        <!-- Right button -->
+                        <button id='cityNumberButton' type="button" class="btn btn-outline-primary"
+                            onclick="AddMarker(GetRandomInactiveCity())">
+                            <svg class="bi bi-plus" width="23" height="23" viewBox="0 0 16 16" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z"
+                                    clip-rule="evenodd" />
+                                <path fill-rule="evenodd"
+                                    d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Column Nearest Neighbor-->
+            <div class="col">
+                <div class="row">
+                    <h5>Nearest Neighbor</h5>
+                </div>
+                <div class="row">
+                    <p> Heuristic, `O(n^2)` </p>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <button id="runNN" class="btn btn-primary btn-m" onclick="Run('NN')">Run <i class=""
+                                    id="spinnerNN"></i></button> &nbsp; &nbsp;
+                            <i class="" id="checkNN"></i>
+                            <p id="runtimeNN"> &nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h5 id="resultNN"></h5>
+                </div>
+            </div>
+            <!-- Column Dynamic Programming-->
+            <div class="col">
+                <div class="row">
+                    <h5>Dynamic Programming </h5>
+                </div>
+                <div class="row">
+                    <p>Exact solution, `O(n^2) * 2^n` </p>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <button id="runDP" class="btn btn-primary btn-m" onclick="Run('DP')">Run <i class=""
+                                    id="spinnerDP"></i></button>
+                            &nbsp;
+                            &nbsp;
+                            <i class="" id="checkDP"></i>
+                            <p id="runtimeDP"> &nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h5 id="resultDP"></h5>
+                </div>
+            </div>
+            <!-- Empty clumn -->
+            <div class="col-4">
+            </div>
         </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="reinforcement-learning">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/BirdsLearnToFly.png" alt="BirdsLearnToFly">
-          <div class="card-body">
-            <h4 class="card-title">AI Birds Learn to Fly </h4>
-            <p class="card-text">Generations of birds evolve to finally master flying. Achieved using a
-              self-implemented neural network, a fitness function and random mutations. Developed in C# using Unity.</p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/EvolvingNeuralNetwork/tree/master/Assets/Scripts"
-              class="btn btn-dark">View Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;">
-            </a>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=3Tjy9F2I5mU"
-              class="btn btn-dark">View on YouTube
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="mobile-dev">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/Mastermind.png" alt="Mastermind">
-          <div class="card-body">
-            <h4 class="card-title">Android App "Mastermind" </h4>
-            <p class="card-text">Google Play app of the classic board game Mastermind. Extended by a 5-slot game mode
-              for advanced
-              players. Project includes ads and analytics. Developed in C# using Unity.</p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-            href="https://github.com/exoflow/Mastermind/blob/master/MastermindPlayfield.cs"
-            class="btn btn-dark">View Code
-            <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;">
-          </a>
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://play.google.com/store/apps/details?id=com.mindwave.mastermind" class="btn btn-dark">View
-             Google Play</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="regression">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/PredictingHousePrices.png" alt="">
-          <div class="card-body">
-            <h4 class="card-title">House Prices Prediction</h4>
-            <p class="card-text">Popular regression challenge to predict house prices given 79 features. Solved with
-              scikit-learn using Ridge regression with parameter tuning.</p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/PredictingHousePrices/blob/master/predicting_house_prices_scikit_ridge_tuning.ipynb"
-              class="btn btn-dark">View Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;"></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="reinforcement-learning">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/Rockets.png" alt="Rockets">
-          <div class="card-body">
-            <h4 class="card-title">Boosters Learn to Land</h4>
-            <p class="card-text">Inspired by SpaceX, rocket boosters try to land using 1 main engine and 4 side
-              thrusters. Implemented in C# using a neural network and reinforcement learning. Turns out, controlling thrusters is
-              tough. </p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/BoostersLearnToLand/blob/master/Assets/Scripts"
-              class="btn btn-dark">View Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;"></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="classification">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/Wine.png" alt="Wines">
-          <div class="card-body">
-            <h4 class="card-title">NLP on Wine Reviews</h4>
-            <p class="card-text">Feature extraction from text using natural language processing tools like count vectorization and tf-idf tranformation. The text processing model outperformed a simple baseline model in accuracy, precision and recall.</p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/WineReviewsNLP/blob/master/wine_price_range_classification_nlp.ipynb"
-              class="btn btn-dark">View Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;">
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="classification">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/FraudTransactions.png" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Visualizing Fraud Transactions</h4>
-            <p class="card-text">394 dimensions reduced down to a single 2D plot. Achieved using Gradient Boosting and
-              high dimensionality visualization with t-SNE. </p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/VisualizingFraudTransactions/blob/master/fraud_transactions_tsne_scikit.pdf"
-              class="btn btn-dark">View Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;">
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="classification">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/PredictingPneumonia.png" alt="PredictingPneumonia">
-          <div class="card-body">
-            <h4 class="card-title">Pneumonia Prediction</h4>
-            <p class="card-text">Image recognition challenge to predict pneumonia from chest x-ray images. Solved with
-              TensorFlow and a Convolutional Neural Network.</p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/PredictingPneumonia/blob/master/pneumonia_tensorflow_cnn.ipynb"
-              class="btn btn-dark">View Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;">
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="regression">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/PredictingUsedCarsValue.png" alt="PredictingPneumonia">
-          <div class="card-body">
-            <h4 class="card-title">Used Car Prices Prediction</h4>
-            <p class="card-text">Regression challenge to predict used cars based on web crawled data from ebay. Solved
-              with scikit-learn and a Random Forest. </p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/PredictingUsedCarPrices/blob/master/predicting_car_prices_scikit_randomforest.ipynb"
-              class="btn btn-dark">View Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;">
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-5" name="mobile-dev">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/DeviceModelSegmentation.png" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Mobile Device Segmentation</h4>
-            <p class="card-text">Simple but effective segementation approch to improve advertising profitability.
-              Includes example scripts to upload segments to Applovin and Facebook Ads via API. </p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer"
-              href="https://github.com/exoflow/DeviceModelSegmentation/blob/master/README.md" class="btn btn-dark">View
-              Code
-              <img src="images/GitHub.png" alt="GitHub" width="22" height="22" style="margin-left: 7px;">
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="col-md-4 mb-5" name="web-dev">
-        <div class="card h-100">
-          <img class="card-img-top" src="images/TrendPlatform.png" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Trend Platform</h4>
-            <p class="card-text">Django based web platform to monitor trends, topics and startups. (currently in
-              development).</p>
-          </div>
-          <div class="card-footer">
-            <a target="_blank" rel="noopener noreferrer" href="" class="btn btn-dark"
-              style="background-color: grey; border-color: grey; ">Not published</a>
-          </div>
-        </div>
-      </div> -->
-
-
     </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Map div-->
+    <div class="col">
+        Map
+        <div id="map"></div>
+    </div>
 
-    <!-- Checkbox filter function -->
+    <!-- Map Script-->
     <script>
-      var checkboxes = document.querySelectorAll('[type="checkbox"]');
-
-      function uncheckAll() {
-        Array.from(checkboxes).forEach(function (checkBox) {
-          checkBox.checked = false;
-        })
-      };
-
-      var fnDisplayDivs = () => {
-        Array.from(checkboxes).forEach(function (checkBox) {
-
-          if (checkBox.checked) {
-            document.getElementById("inlineCheckbox0").checked = false;
-          };
-
-          var div = document.getElementsByName(checkBox.getAttribute("value"));
-
-          div.forEach(changeVisibility);
-
-          function changeVisibility(div) {
-            if (checkBox.checked) {
-              div.style.display = "block";
-
-            } else {
-              div.style.display = "none";
-            }
-          }
-        })
-      };
-
-      var checkNone = () => {
-
-        var noneActive = true;
-
-        Array.from(checkboxes).forEach(function (checkBox) {
-          if (checkBox.checked) {
-            noneActive = false;
-          }
-        })
-
-        if (noneActive) {
-          console.log('nonActive=true')
-          document.getElementById("inlineCheckbox0").checked = true;
-
-          var div = document.getElementsByClassName("col-md-4 mb-5");
-          console.log(div)
-          Array.from(div).forEach(function (div) {
-            div.style.display = "block";
-          })
-        };
-      };
-
-      Array.from(checkboxes).forEach(function (checkBox) {
-        checkBox.addEventListener("change", function () {
-
-          fnDisplayDivs();
-          checkNone();
-        })
-      });
+        var map = L.map("map", { center: [47.3723941, 4.5423328], zoom: 5, });
+        L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png").addTo(map);
     </script>
+
+    <!-- Links to scripts -->
+    <script src="./Scripts/StaticCities.js"></script>
+    <script src="./Scripts/CityFunctions.js"></script>
+    <script src="./Scripts/MapMarkers.js"></script>
+    <script src="./Scripts/NearestNeighbor.js"></script>
+    <script src="./Scripts/DynamicProgramming.js"></script>
+    <script src="./Scripts/SharedFunctions.js" onload="PageLoad()"></script>
+
 </body>
 
 </html>
