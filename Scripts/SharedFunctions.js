@@ -9,6 +9,8 @@ function PageLoad() {
         AddMarker(GetRandomInactiveCity());
     }
     CenterMap();
+
+    console.log(map.getPanes() )
 }
 
 function Run(algorithm) {
