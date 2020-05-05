@@ -1,0 +1,62 @@
+#map {
+    position: absolute;
+    height: 80vh;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#baseContainer{
+    max-width: 100% ;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color:black
+}
+
+#numberOfCities {
+    display: flex;
+}
+
+.row h5{
+    margin-top:4px;
+    padding-bottom:4px;
+    margin-bottom:0px;
+    color: white;
+}
+
+h3{
+    padding-top: 8px;
+    color: white;
+    padding-left: 12px;
+}
+
+.row p {
+    padding-bottom: 4px;
+    margin-bottom: 0px;
+    color: darkgrey;
+    align-self: center;
+}
+
+#activeCities {
+    line-height:38px; 
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+h5{
+    padding-top: 8px;
+}
+
+#checkNN{
+    font-size:38px; 
+    -webkit-text-stroke: 5px black;
+}
+
+#checkDP{ 
+    font-size:38px; 
+    -webkit-text-stroke: 5px black;
+}
+
